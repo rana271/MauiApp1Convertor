@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiApp1Convertor.ConvertPage2"
+              xmlns:local="clr-namespace:MauiApp1Convertor.Converter"
+             Title="ConvertPage2">
+    <ContentPage.Resources>
+    <ResourceDictionary>
+        <local:ValueConverter x:Key="TextValidator" />
+          <local:CheckBoxCheckConverter x:Key="CheckValidator" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <VerticalStackLayout>
+        <Entry x:Name="txtName" Text="Hello"   Placeholder="Enter Name"/>
+        <CheckBox   IsChecked="{Binding Source={x:Reference txtName},Path=Text,Converter={StaticResource CheckValidator}}"></CheckBox>
+        <Label VerticalTextAlignment="Center"  Text="Married">
+            
+        </Label>
+        <Button x:Name="btnSubmit" Text="Submit" IsEnabled="{Binding Source={x:Reference txtName},Path=Text,Converter={StaticResource TextValidator}}" />
+    </VerticalStackLayout>
+</ContentPage>

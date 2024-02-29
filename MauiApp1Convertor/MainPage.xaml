@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:MauiApp1Convertor.Converter"
+             x:Class="MauiApp1Convertor.MainPage">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <local:NumberValidator x:Key="mobileValidator" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <StackLayout>
+        <Label Text="Enable Button if Text Lenght is equal 10 using Value Converter" FontSize="Large"  TextColor="Black"/>
+        <Entry x:Name="txtMobile" Keyboard="Numeric"  Placeholder="Enter Mobile Number"/>
+        <Button x:Name="btnSubmit" Text="Submit" IsEnabled="{Binding Source={x:Reference txtMobile},Path=Text.Length,Converter={StaticResource mobileValidator}}" Clicked="btnSubmit_Clicked" />
+    </StackLayout>
+
+</ContentPage>
